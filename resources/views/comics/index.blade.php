@@ -53,9 +53,9 @@
                                 @endforeach
                             </ul>
                         </li> 
-                        <li>
+                         <li>
                             <button class="btn btn-primary">
-                                <a class="text-white text-decoration-none" href="{{ route('comics.show', [$comic]) }}">Vai al comic</a>
+                                <a class="text-white text-decoration-none" href="{{ route('comics.show', $singleComic) }}">Vai al comic</a>
                             </button>
                         </li>
                     </ul>
