@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // Controllers
-use App\Http\Controllers\Admin\ComicController;
+use App\Http\Controllers\ComicController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,21 +14,10 @@ use App\Http\Controllers\Admin\ComicController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    $firstName = 'Gino';
-    $lastName = 'Paoli';
-
-
-    return view('welcome', [
-        'firstName' => $firstName,
-        'lastName' => $lastName,
-    ]);
+Route::get("/", function () {
+    return view("comics.welcome");
 });
 
-Route::get('/chi-siamo', function () {
-    return view('subpages.about');
-});
 
 Route::resource('comics', ComicController::class);
 
