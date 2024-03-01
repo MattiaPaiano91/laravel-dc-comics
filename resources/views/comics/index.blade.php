@@ -14,7 +14,7 @@
             @foreach ( $comics as $singleComic)
             
                 <div class="card m-3 p-3">
-                    <ul class="p-0">
+                    <ul class="p-0 d-flex flex-column h-100">
                         <li><h5 class="d-inline-block">Titolo:</h5> {{ $singleComic->title }}</li>
                         <li><h5 class="d-inline-block">Descrizione:</h5> {{ $singleComic->description }}</li>
                         <li class="my-3">
@@ -53,14 +53,14 @@
                                 @endforeach
                             </ul>
                         </li> 
-                         <li>
-                            <button class="btn btn-primary">
+                         <li class="mt-auto align-self-center ">
+                            <button class="btn btn-primary me-2">
                                 <a class="text-white text-decoration-none" href="{{ route('comics.show', $singleComic) }}">Vai al comic</a>
                             </button>
-                            <button class="btn btn-warning">
+                            <button class="btn btn-warning me-2">
                                 <a class="text-white text-decoration-none" href="{{ route('comics.edit', $singleComic) }}">Modifica</a>
                             </button>
-                            <form onsubmit="return confirm('Vuoi davvero eliminare L\'elemento?')" class="d-inline-block" action="{{ route('comics.destroy', $singleComic) }}" method="POST">
+                            <form onsubmit="return confirm('Vuoi davvero eliminare L\'elemento?')" class="d-inline-block me-2" action="{{ route('comics.destroy', $singleComic) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger">
