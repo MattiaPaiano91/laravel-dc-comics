@@ -57,9 +57,20 @@
                             <button class="btn btn-primary">
                                 <a class="text-white text-decoration-none" href="{{ route('comics.show', $singleComic) }}">Vai al comic</a>
                             </button>
+                            <button class="btn btn-warning">
+                                <a class="text-white text-decoration-none" href="{{ route('comics.edit', $singleComic) }}">Modifica</a>
+                            </button>
+                            <form onsubmit="return confirm('Vuoi davvero eliminare L\'elemento?')" class="d-inline-block" action="{{ route('comics.destroy', $singleComic) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">
+                                    Elimina
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
+                                
 
 
             @endforeach  
