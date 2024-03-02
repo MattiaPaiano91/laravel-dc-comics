@@ -36,3 +36,6 @@ Una per l'index
 Una per lo show
 Una per il create
 Una per l'edit Tutte queste 4 view, saranno messe in una cartella dentro views, nominata come la risorsa al plurale in kebab case (ad es., se la risorsa è mio libro, il nome della cartella sarà my-books). I nomi delle 4 view, solitamente, corrisponderanno al nome della funzione che le restituisce (quindi, index.blade.php per index, show.blade.php per show, create.blade.php per create e edit.blade.php per edit)
+
+<!-- Aggiungi un pulsante per aprire l'offcanvas -->
+                                
