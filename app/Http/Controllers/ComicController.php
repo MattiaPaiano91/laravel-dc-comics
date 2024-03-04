@@ -12,8 +12,9 @@ class ComicController extends Controller
      */
     public function index()
     {
+        $footerLinks = config('footerLinks');
         $comics = Comic::all();
-        return view('comics.index', compact('comics'));
+        return view('comics.index', compact('comics', 'footerLinks'));
     }
 
     /**
@@ -21,7 +22,8 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view('comics.create');
+        $footerLinks = config('footerLinks');
+        return view('comics.create', compact('footerLinks'));
     }
 
     /**
@@ -29,20 +31,29 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $comicData = $request->all();
+
+        $comicData = $request->validate([
+            'title' => 'required|max:64',
+            'description' => 'nullable',
+            'price' => 'required|numeric',
+            'type' => 'nullable|max:64',
+            'series' => 'required|max:64',
+            'artists' => 'required',
+            'writers' => 'required'
+        ]); 
 
         $comic = new Comic();
-        $comic->title = $comicData['title'];
-        $comic->description = $comicData['description'];
-        $comic->price = $comicData['price'];
-        $comic->type = $comicData['type'];
-        $comic->series = $comicData['series'];
+        $comic -> title = $comicData['title'];
+        $comic -> description = $comicData['description'];
+        $comic -> price = $comicData['price'];
+        $comic -> type = $comicData['type'];
+        $comic -> series = $comicData['series'];
 
         $artist = explode(',', $comicData['artists']);
-        $comic->artists = json_encode($artist);
+        $comic -> artists = json_encode($artist);
 
         $writers = explode(',', $comicData['writers']);
-        $comic->writers = json_encode($writers);
+        $comic -> writers = json_encode($writers);
         
         $comic->save();
         return redirect()->route('comics.show', ['comic' => $comic->id]);
@@ -53,7 +64,8 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        return view('comics.show', compact('comic'));
+        $footerLinks = config('footerLinks');
+        return view('comics.show', compact('comic', 'footerLinks'));
     }
 
     /**
@@ -61,7 +73,8 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        return view('comics.edit', compact('comic'));
+        $footerLinks = config('footerLinks');
+        return view('comics.edit', compact('comic', 'footerLinks'));
     }
 
     /**

@@ -80,7 +80,7 @@
                                 </button>
                                 <div class="offcanvas offcanvas-end d" tabindex="-1"
                                     id="deleteConfirmation{{ $singleComic->id , $singleComic->thumb, $singleComic->title}}"
-                                    aria-labelledby="deleteConfirmationLabel{{ $singleComic->id , $singleComic->thumb, $singleComic->title}}">
+                                    >
                                     <div class="offcanvas-header">
                                         <h5 class="offcanvas-title" id="deleteConfirmationLabel{{ $singleComic->id, $singleComic->thumb ,$singleComic->title }}">
                                             Conferma eliminazione</h5>

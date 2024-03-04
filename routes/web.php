@@ -15,7 +15,8 @@ use App\Http\Controllers\ComicController;
 |
 */
 Route::get("/", function () {
-    return view("comics.welcome");
+    $footerLinks = config('footerLinks');
+    return view("comics.welcome", compact('footerLinks'));
 });
 
 
